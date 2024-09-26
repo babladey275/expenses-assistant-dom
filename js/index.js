@@ -1,3 +1,4 @@
+// add event listener for calculate button
 const calculateButton = document.getElementById('calculate');
 
 calculateButton.addEventListener('click', function(){
@@ -6,7 +7,7 @@ calculateButton.addEventListener('click', function(){
     const software = parseFloat(document.getElementById('software').value);
     const courses = parseFloat(document.getElementById('courses').value);
     const internet = parseFloat(document.getElementById('internet').value);
-    
+
     const totalExpenses = software + courses + internet;
     const balance = income - totalExpenses;
 
@@ -15,4 +16,30 @@ calculateButton.addEventListener('click', function(){
 
     const balanceElement = document.getElementById('balance');
     balanceElement.innerText = balance.toFixed(2);
+
+    const result = document.getElementById('results');
+    result.classList.remove('hidden');
+});
+
+// add event listener for savings button
+const calculateSavingsButton = document.getElementById('calculate-savings');
+
+calculateSavingsButton.addEventListener('click', function(){
+    const income = parseFloat(document.getElementById('income').value);
+    const software = parseFloat(document.getElementById('software').value);
+    const courses = parseFloat(document.getElementById('courses').value);
+    const internet = parseFloat(document.getElementById('internet').value);
+    const savingsPercentage = parseFloat(document.getElementById('savings').value);
+
+    const totalExpenses = software + courses + internet;
+    const balance = income - totalExpenses;
+
+    const savingsAmount = (balance * savingsPercentage) / 100;
+    const remainingBalance = balance - savingsAmount;
+
+    const savingsElement = document.getElementById('savings-amount');
+    savingsElement.innerText = savingsAmount.toFixed(2);
+
+    const remainingElement = document.getElementById('remaining-balance');
+    remainingElement.innerText = remainingBalance.toFixed(2);
 });
